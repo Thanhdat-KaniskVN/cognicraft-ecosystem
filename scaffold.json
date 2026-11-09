@@ -1,0 +1,154 @@
+{
+  "files": [
+    {
+      "path": "777.py",
+      "role": "Entrypoint / orchestrator cho CogniCraft ecosystem — khởi tạo bot, đăng ký commands, wire event bus, chạy scheduler tasks",
+      "exports": [
+        {
+          "type": "function",
+          "name": "main",
+          "signature": "() -> None"
+        },
+        {
+          "type": "function",
+          "name": "create_bot",
+          "signature": "() -> discord.ext.commands.Bot"
+        },
+        {
+          "type": "function",
+          "name": "setup_commands",
+          "signature": "(bot: discord.ext.commands.Bot) -> None"
+        },
+        {
+          "type": "function",
+          "name": "setup_tasks",
+          "signature": "(bot: discord.ext.commands.Bot) -> None"
+        },
+        {
+          "type": "function",
+          "name": "wire_event_bus",
+          "signature": "(bot: discord.ext.commands.Bot) -> None"
+        },
+        {
+          "type": "function",
+          "name": "load_plugins",
+          "signature": "(bot: discord.ext.commands.Bot) -> None"
+        },
+        {
+          "type": "function",
+          "name": "shutdown",
+          "signature": "(bot: discord.ext.commands.Bot) -> None"
+        }
+      ],
+      "imports": [
+        {
+          "module": "config",
+          "names": [
+            "DISCORD_TOKEN",
+            "GUILD_ID"
+          ]
+        },
+        {
+          "module": "bot",
+          "names": [
+            "on_ready",
+            "on_message",
+            "on_command_error",
+            "ai_scoring_task",
+            "report_task",
+            "ml_refresh_task",
+            "run_ai_scoring",
+            "generate_final_report"
+          ]
+        },
+        {
+          "module": "slash_commands",
+          "names": [
+            "setup_slash_commands"
+          ]
+        },
+        {
+          "module": "hub_commands",
+          "names": [
+            "setup_hub_commands"
+          ]
+        },
+        {
+          "module": "plugin_commands",
+          "names": [
+            "setup_plugin_commands"
+          ]
+        },
+        {
+          "module": "event_bus",
+          "names": [
+            "EventBus"
+          ]
+        },
+        {
+          "module": "plugin_loader",
+          "names": [
+            "PluginLoader"
+          ]
+        },
+        {
+          "module": "database",
+          "names": [
+            "init_db"
+          ]
+        },
+        {
+          "module": "access_control",
+          "names": [
+            "AccessControl"
+          ]
+        },
+        {
+          "module": "ai_provider",
+          "names": [
+            "get_token_stats",
+            "cache_stats"
+          ]
+        },
+        {
+          "module": "time_tracker",
+          "names": [
+            "TimeTracker"
+          ]
+        },
+        {
+          "module": "sheets_sync",
+          "names": [
+            "SheetsSync"
+          ]
+        },
+        {
+          "module": "discord",
+          "names": [
+            "Intents",
+            "Bot"
+          ]
+        },
+        {
+          "module": "asyncio",
+          "names": [
+            "run",
+            "create_task"
+          ]
+        },
+        {
+          "module": "logging",
+          "names": [
+            "getLogger",
+            "basicConfig"
+          ]
+        }
+      ],
+      "original_content": null
+    }
+  ],
+  "data_flow": "config → 777.main → create_bot → setup_commands (slash_commands, hub_commands, plugin_commands) → setup_tasks (ai_scoring_task, report_task, ml_refresh_task) → wire_event_bus (EventBus ↔ bot) → load_plugins (PluginLoader) → bot.run(DISCORD_TOKEN)",
+  "priority_order": [
+    "777.py"
+  ]
+}
