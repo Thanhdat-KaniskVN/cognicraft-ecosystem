@@ -1,0 +1,15 @@
+{
+  "files": [
+    {
+      "path": "abc.py",
+      "role": "Placeholder module (task requested file abc.py; no existing logic to preserve)",
+      "exports": [],
+      "imports": [],
+      "original_content": null
+    }
+  ],
+  "data_flow": "abc.py is standalone; no dependencies on existing modules",
+  "priority_order": [
+    "abc.py"
+  ]
+}
